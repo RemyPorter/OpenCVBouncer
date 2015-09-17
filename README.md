@@ -1,5 +1,5 @@
 # OpenCV Hello World
-This is just a simple OpenCV project in Processing which tracks movements in foreground objects and uses that to allow those movements to move a bouncing ball around.
+This is just a simple OpenCV project in Processing 2 which tracks movements in foreground objects and uses that to allow those movements to move a bouncing ball around.
 
 The current visualization mode includes some debugging symbols to make it easier to see what OpenCV detects as moving objects.
 
