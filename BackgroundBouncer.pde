@@ -26,7 +26,6 @@ void setup() {
 void draw() {
     clear();
     scale(2);
-    //image(video, 0, 0 );
     opencv.loadImage(video);
     opencv.flip(OpenCV.HORIZONTAL);
     opencv.updateBackground();
@@ -36,14 +35,10 @@ void draw() {
     noFill();stroke(255,0,0);
     strokeWeight(1);
     image(opencv.getOutput(), 0, 0);
-    //opencv.drawOpticalFlow();
     for (Contour c : opencv.findContours()) {
         Contour hull = c.getConvexHull();
         Rectangle box = hull.getBoundingBox();
-        PVector flow = opencv.getAverageFlowInRegion(box.x, box.y, box.width, box.height);
-        rect(box.x, box.y, box.width, box.height);
         b.strike(c, opencv);
-        //hull.draw();
     }
     b.move();
     reflect(b);

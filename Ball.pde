@@ -1,5 +1,6 @@
-float decayRate = 0.95;
-float scalingFactor = 1.5;
+float decayRate = 0.9;
+float scalingFactor = 7;
+PVector gravity = new PVector(0, 0.5);
 class Ball {
   public Ball() {
     size = 25;
@@ -13,14 +14,16 @@ class Ball {
   public color shade;
   public void move() {
     position.add(momentum);
+    momentum.add(gravity);
     momentum.mult(decayRate);
   }
   public void strike(Contour c, OpenCV opencv) {
     for (PVector p : c.getPoints()) {
         if (p.dist(position) <= size) {
             Rectangle box = c.getBoundingBox();
-            momentum.add(opencv.getAverageFlowInRegion(box.x, box.y, box.width, box.height));
-            momentum.mult(scalingFactor);
+            PVector flow = opencv.getAverageFlowInRegion(box.x, box.y, box.width, box.height);
+            flow.mult(scalingFactor);
+            momentum.add(flow);
             return;
         }
     }
