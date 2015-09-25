@@ -1,18 +1,17 @@
-import gab.opencv.*;
 import processing.video.*;
+import gab.opencv.*;
 import java.awt.Rectangle;
 
 Capture video;
 OpenCV opencv;
-Flow f;
 Ball b;
 
 void setup() {
     size(640,480, P3D);
     frameRate(30);
     ellipseMode(RADIUS);
-    video = new Capture(this, 640/2, 480/2);
-    opencv = new OpenCV(this, 640/2, 480/2);
+    video = new Capture(this, width/2, height/2);
+    opencv = new OpenCV(this, width/2, height/2);
     b = new Ball();
 
 
